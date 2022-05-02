@@ -12,9 +12,7 @@ You repository must include a README.md file with the following
 - Simon Roswall Jørgensen / RandomHat
 - Haci Murat Fatih Memis / Buttersail
 
-A link to your deployed Spring Boot Project (using a REAL MySQL Database)
-
-## Deployed Project Link
+## Deployed Project Link (with a MySQL Database)
 
 ## Description of commits (backend & frontend)
 
