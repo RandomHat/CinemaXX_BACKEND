@@ -14,12 +14,12 @@ You repository must include a README.md file with the following
 
 ## Deployed Project Link (with a MySQL Database)
 
-## Description of commits (backend & frontend)
+## Description of Sprint commitmends (backend & frontend)
 
 ## Frontend Repository Link
 https://github.com/Buttersail/CinemaXX_FRONTEND
 
 ## Deployed Frontend Link
 
-## Expected Sprints to be completed
+## Expected Sprints to be Completed
 
