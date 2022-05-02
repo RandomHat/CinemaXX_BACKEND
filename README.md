@@ -21,6 +21,7 @@ Refer to the last point in this README for commitments, which will be changing d
 https://github.com/Buttersail/CinemaXX_FRONTEND
 
 ## Deployed Frontend Link
+https://yellow-mud-0c1792703.1.azurestaticapps.net/
 
 ## Expected Sprints to be Completed
 https://github.com/RandomHat/CinemaXX_BACKEND/projects/1
