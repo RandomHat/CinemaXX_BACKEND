@@ -15,6 +15,7 @@ You repository must include a README.md file with the following
 - Haci Murat Fatih Memis / Buttersail
 
 ## Deployed Project Link (with a MySQL Database)
+https://cinema-xx.azurewebsites.net
 
 ## Description of Sprint commitments (backend & frontend)
 Refer to the last point in this README for commitments, which will be changing depending on how far we are in the project.
