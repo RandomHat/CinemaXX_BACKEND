@@ -1,6 +1,8 @@
 # CinemaXX_BACKEND
 Final programming project sem3
 
+[![Build and deploy JAR app to Azure Web App - Cinema-XX](https://github.com/RandomHat/CinemaXX_BACKEND/actions/workflows/main_cinema-xx.yml/badge.svg?branch=main)](https://github.com/RandomHat/CinemaXX_BACKEND/actions/workflows/main_cinema-xx.yml)
+
 Monday may 2nd.
 You must send me an email with the following
 This must be clearly marked as BACKEND
