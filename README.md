@@ -16,9 +16,10 @@ You repository must include a README.md file with the following
 
 ## Description of commits (backend & frontend)
 
-## Frontend repository Link
+## Frontend Repository Link
+https://github.com/Buttersail/CinemaXX_FRONTEND
 
-## Deployed Frontend link
+## Deployed Frontend Link
 
 ## Expected Sprints to be completed
 
