@@ -1,4 +1,4 @@
-package kea.dat3.security.dto;
+package kea.dat3.security.jwt.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
