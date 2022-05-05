@@ -1,7 +1,7 @@
 package kea.dat3.security.api;
 
-import kea.dat3.security.dto.LoginRequest;
-import kea.dat3.security.dto.LoginResponse;
+import kea.dat3.security.jwt.dto.LoginRequest;
+import kea.dat3.security.jwt.dto.LoginResponse;
 import kea.dat3.security.jwt.JwtTokenUtil;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

@@ -14,6 +14,9 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @Entity
+@Inheritance(
+        strategy = InheritanceType.JOINED
+)
 public class Person implements UserWithPassword {
 
     private String email;
