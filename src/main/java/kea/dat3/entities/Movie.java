@@ -30,6 +30,20 @@ public class Movie {
     @OneToMany(mappedBy = "movie")
     Set<Screening> screenings = new HashSet<>();
 
+    /* TODO fix
     @ManyToOne()
     private Cinema cinema;
+     */
+
+    public Movie(int id, String title, String genre, int ageLimit, String cover, String overview, LocalDate releaseDate, double rating, int duration) {
+        this.id = id;
+        this.title = title;
+        Genre = genre;
+        this.ageLimit = ageLimit;
+        this.cover = cover;
+        this.overview = overview;
+        this.releaseDate = releaseDate;
+        Rating = rating;
+        this.duration = duration;
+    }
 }

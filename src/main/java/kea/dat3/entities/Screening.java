@@ -1,11 +1,17 @@
 package kea.dat3.entities;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 public class Screening {
 
@@ -13,24 +19,36 @@ public class Screening {
     private int id;
 
     @CreationTimestamp
-    LocalDateTime created;
+    private LocalDateTime created;
 
-    int duration;
+    private int duration;
 
-    int seat_Reservation_Counter;
+    private int seat_Reservation_Counter;
 
+    /* TODO fix
     @OneToMany(mappedBy = "reservationId")
     private Set<Reservation> Screenings = new HashSet<>();
+     */
 
     @ManyToOne()
     private Staff createdBy;
 
     @ManyToOne()
     private Movie movie;
+/* TODO fix
 
     @ManyToOne()
     private Cinema cinema;
 
     @ManyToOne()
     private Hall hall;
+
+ */
+
+    public Screening(int id, LocalDateTime created, int duration, int seat_Reservation_Counter) {
+        this.id = id;
+        this.created = created;
+        this.duration = duration;
+        this.seat_Reservation_Counter = seat_Reservation_Counter;
+    }
 }

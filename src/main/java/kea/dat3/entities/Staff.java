@@ -1,11 +1,8 @@
 package kea.dat3.entities;
 
-import kea.dat3.security.UserWithPassword;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 import java.util.HashSet;

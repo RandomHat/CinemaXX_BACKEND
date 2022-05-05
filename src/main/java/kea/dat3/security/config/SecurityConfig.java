@@ -74,6 +74,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //.anyRequest().authenticated(); //TODO Enable security when test is debugged.
                 .anyRequest().permitAll();  //Disable Security
         http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
+        //TODO h2 xfram option
+        http.headers().frameOptions().disable();
     }
 
     @Override
