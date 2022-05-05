@@ -17,15 +17,15 @@ public class Seat {
     @Id
     int id;
 
-    int row;
+    int rowNo;
     int seatNo;
 
     @ManyToOne
     Hall hallId;
 
-    public Seat(int id, int row, int seatNo) {
+    public Seat(int id, int rowNo, int seatNo) {
         this.id = id;
-        this.row = row;
+        this.rowNo = rowNo;
         this.seatNo = seatNo;
     }
 }
