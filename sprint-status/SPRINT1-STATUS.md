@@ -7,6 +7,7 @@
 ### Mark
 
 ### Simon
+* Created entity classes: Reservation, Customer, Ticket. Debugged an issue were security was enabled in a test from the startcode causing the test to fail. Reenabled security which was disabled for the same reason.
 
 ### Murat
 * Made the entities classes for Seat.java, Hall.java and Cinema.java together with their relations (not completed yet)
