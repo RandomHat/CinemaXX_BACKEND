@@ -22,8 +22,8 @@ public class Reservation {
     //@OneToOne
     //private Seat seat;
 
-    //@ManyToOne
-    //private Screening screening;
+    @ManyToOne
+    private Screening screening;
 
     @ManyToOne
     private Customer customer;
