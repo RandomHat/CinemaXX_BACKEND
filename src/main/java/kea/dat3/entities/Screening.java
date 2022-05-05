@@ -36,15 +36,12 @@ public class Screening {
 
     @ManyToOne()
     private Movie movie;
-/* TODO fix
 
     @ManyToOne()
     private Cinema cinema;
 
     @ManyToOne()
     private Hall hall;
-
- */
 
     public Screening(int id, LocalDateTime created, int duration, int seat_Reservation_Counter) {
         this.id = id;
