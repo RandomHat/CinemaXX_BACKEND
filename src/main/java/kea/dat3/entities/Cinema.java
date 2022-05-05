@@ -21,8 +21,11 @@ public class Cinema {
     String address;
     int phoneNumber;
 
-    @OneToMany(mappedBy = "cinemaId", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "cinema", fetch = FetchType.EAGER)
     private Set<Hall> halls = new HashSet<>();
+
+    @OneToMany(mappedBy = "cinema", fetch = FetchType.EAGER)
+    private Set<Screening> screenings = new HashSet<>();
 
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(

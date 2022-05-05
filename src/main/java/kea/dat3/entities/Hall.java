@@ -22,8 +22,11 @@ public class Hall {
     @ManyToOne
     Cinema cinemaId;
 
-    @OneToMany(mappedBy = "hallId", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "hall", fetch = FetchType.EAGER)
     private Set<Seat> seats = new HashSet<>();
+
+    @OneToMany(mappedBy = "hall", fetch = FetchType.EAGER)
+    private Set<Screening> screenings = new HashSet<>();
 
 
     public Hall(int id, int hallNo) {
