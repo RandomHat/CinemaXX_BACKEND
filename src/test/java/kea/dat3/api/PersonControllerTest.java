@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @ActiveProfiles("test")
-@AutoConfigureMockMvc
+@AutoConfigureMockMvc(addFilters = false) // disable security in this test.
 class PersonControllerTest {
 
   @Autowired
