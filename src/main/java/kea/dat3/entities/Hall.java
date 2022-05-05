@@ -20,10 +20,13 @@ public class Hall {
     int hallNo;
 
     @ManyToOne
-    Cinema cinemaId;
+    Cinema cinema;
 
-    @OneToMany(mappedBy = "hallId", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "hall", fetch = FetchType.EAGER)
     private Set<Seat> seats = new HashSet<>();
+
+    @OneToMany(mappedBy = "hall", fetch = FetchType.EAGER)
+    private Set<Screening> screenings = new HashSet<>();
 
 
     public Hall(int id, int hallNo) {

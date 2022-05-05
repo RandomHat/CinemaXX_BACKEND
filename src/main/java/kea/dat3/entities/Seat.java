@@ -4,9 +4,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -21,7 +21,10 @@ public class Seat {
     int seatNo;
 
     @ManyToOne
-    Hall hallId;
+    Hall hall;
+
+    @OneToMany(mappedBy = "seat", fetch = FetchType.EAGER)
+    private Set<Reservation> reservations = new HashSet<>();
 
     public Seat(int id, int rowNo, int seatNo) {
         this.id = id;
