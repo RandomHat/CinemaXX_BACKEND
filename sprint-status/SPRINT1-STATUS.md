@@ -5,6 +5,8 @@
 
 ## A section "Who did what" with a section for each member in the group, written by each member, explaining what you specifically did in this sprint.
 ### Mark
+* Made the entities classes for Screening.java, Staff.java, Movie.java together with ther relations.
+* Setup the Virtual machine on Azure with a docker container, including a MySQL database.
 
 ### Simon
 * Created entity classes: Reservation, Customer, Ticket. Debugged an issue were security was enabled in a test from the startcode causing the test to fail. Reenabled security which was disabled for the same reason.
