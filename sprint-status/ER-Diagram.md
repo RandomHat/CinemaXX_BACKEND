@@ -1,4 +1,4 @@
-´´´mermaid
+```mermaid
 erDiagram
           Seat }o--|| Hall : ""
           Seat ||--o{ Reservation : ""
@@ -73,7 +73,7 @@ erDiagram
               string email
               string password
           }
-´´´
+```
 
 
 
