@@ -27,8 +27,8 @@ public class Cinema {
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(
             name = "Cinema_Movie",
-            joinColumns = {@JoinColumn(name = "cinema_id")},
-            inverseJoinColumns = {@JoinColumn(name = "movie_id")}
+            joinColumns = {@JoinColumn(name = "cinema")},
+            inverseJoinColumns = {@JoinColumn(name = "movie")}
     )
     Set<Movie> movies = new HashSet<>();
 
