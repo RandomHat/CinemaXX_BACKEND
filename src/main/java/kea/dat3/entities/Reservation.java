@@ -19,8 +19,8 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    //@OneToOne
-    //private Seat seat;
+    @ManyToOne
+    private Seat seat;
 
     @ManyToOne
     private Screening screening;
