@@ -21,7 +21,7 @@ public class Seat {
     int seatNo;
 
     @ManyToOne
-    Hall hallId;
+    Hall hall;
 
     @OneToMany(mappedBy = "seat", fetch = FetchType.EAGER)
     private Set<Reservation> reservations = new HashSet<>();
