@@ -8,6 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -25,10 +26,10 @@ public class Screening {
 
     private int seat_Reservation_Counter;
 
-    /* TODO fix
-    @OneToMany(mappedBy = "reservationId")
-    private Set<Reservation> Screenings = new HashSet<>();
-     */
+
+    @OneToMany(mappedBy = "screening")
+    private Set<Reservation> screenings = new HashSet<>();
+
 
     @ManyToOne()
     private Staff createdBy;
