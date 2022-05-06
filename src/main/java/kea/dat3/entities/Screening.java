@@ -17,7 +17,7 @@ import java.util.Set;
 public class Screening {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     @CreationTimestamp
     private LocalDateTime created;

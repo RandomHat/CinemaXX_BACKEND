@@ -14,7 +14,7 @@ import java.util.Set;
 @Entity
 public class Staff extends Person {
 
-    @Column(nullable = false, name = "worker_id" )
+    @Column(nullable = false, unique = true, name = "worker_id" )
     private String workerId;
 
     @OneToMany(mappedBy = "createdBy")
