@@ -1,5 +1,6 @@
 package kea.dat3.entities;
 
+import kea.dat3.dto.MovieRequest;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,12 +20,12 @@ public class Movie {
     private long id;
 
     private String title;
-    private String Genre;
+    private String genre;
     private int ageLimit;
     private String cover;
     private String overview;
     private LocalDate releaseDate;
-    private double Rating;
+    private double rating;
     private int duration;
 
     @OneToMany(mappedBy = "movie")
@@ -36,12 +37,15 @@ public class Movie {
     public Movie(int id, String title, String genre, int ageLimit, String cover, String overview, LocalDate releaseDate, double rating, int duration) {
         this.id = id;
         this.title = title;
-        Genre = genre;
+        this.genre = genre;
         this.ageLimit = ageLimit;
         this.cover = cover;
         this.overview = overview;
         this.releaseDate = releaseDate;
-        Rating = rating;
+        this.rating = rating;
         this.duration = duration;
+    }
+
+    public Movie(MovieRequest body) {
     }
 }
