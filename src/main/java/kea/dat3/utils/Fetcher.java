@@ -1,6 +1,7 @@
 package kea.dat3.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import kea.dat3.error.Client4xxException;
 import org.springframework.http.HttpStatus;
@@ -18,7 +19,7 @@ public class Fetcher {
     private String json;
     private ObjectMapper mapper = new ObjectMapper();
 
-    Fetcher(String url){
+    public Fetcher(String url){
         this.url = url;
         this.api_token = System.getenv("API_TOKEN");
     }
@@ -43,6 +44,10 @@ public class Fetcher {
 
     public Map<String, Object> getFetchedMap() throws JsonProcessingException{
         return mapper.readValue(json, Map.class);
+    }
+
+    public JsonNode asJsonNode() throws JsonProcessingException{
+        return mapper.readTree(json);
     }
 
     public String getJson(){
