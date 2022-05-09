@@ -8,7 +8,7 @@ public class CinemaResponse {
 
     String name;
     String address;
-    int phoneNumber;
+    String phoneNumber;
     public CinemaResponse(Cinema body) {
 
         this.id = body.getId();
