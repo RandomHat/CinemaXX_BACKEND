@@ -16,7 +16,7 @@ import java.util.Set;
 public class Movie {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     private String title;
     private String Genre;
