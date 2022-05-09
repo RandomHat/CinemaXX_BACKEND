@@ -19,7 +19,7 @@ public class Cinema {
 
     String name;
     String address;
-    int phoneNumber;
+    String phoneNumber;
 
     @OneToMany(mappedBy = "cinema", fetch = FetchType.EAGER)
     private Set<Hall> halls = new HashSet<>();
@@ -35,7 +35,7 @@ public class Cinema {
     )
     Set<Movie> movies = new HashSet<>();
 
-    public Cinema(int id, String name, String address, int phoneNumber) {
+    public Cinema(int id, String name, String address, String phoneNumber) {
         this.id = id;
         this.name = name;
         this.address = address;
