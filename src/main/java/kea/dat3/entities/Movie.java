@@ -4,6 +4,7 @@ import kea.dat3.dto.MovieRequest;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -23,6 +24,8 @@ public class Movie {
     private String genre;
     private int ageLimit;
     private String cover;
+
+    @Lob
     private String overview;
     private LocalDate releaseDate;
     private double rating;
@@ -34,8 +37,7 @@ public class Movie {
     @ManyToMany(mappedBy = "movies")
     private Set<Cinema> cinemas = new HashSet<>();
 
-    public Movie(int id, String title, String genre, int ageLimit, String cover, String overview, LocalDate releaseDate, double rating, int duration) {
-        this.id = id;
+    public Movie(String title, String genre, int ageLimit, String cover, String overview, LocalDate releaseDate, double rating, int duration) {
         this.title = title;
         this.genre = genre;
         this.ageLimit = ageLimit;
