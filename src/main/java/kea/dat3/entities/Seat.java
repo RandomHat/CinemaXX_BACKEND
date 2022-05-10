@@ -26,8 +26,7 @@ public class Seat {
     @OneToMany(mappedBy = "seat", fetch = FetchType.EAGER)
     private Set<Reservation> reservations = new HashSet<>();
 
-    public Seat(int id, int rowNo, int seatNo) {
-        this.id = id;
+    public Seat(int rowNo, int seatNo) {
         this.rowNo = rowNo;
         this.seatNo = seatNo;
     }

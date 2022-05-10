@@ -84,7 +84,28 @@ public class MakeTestData implements ApplicationRunner {
         movieRepository.saveAll(Arrays.stream(movies).collect(Collectors.toList()));
     }
 
-    public void makeCinemaSetup(){}
+    private Set<Seat> makeHallSeats(){
+        Set<Seat> seats = new HashSet<>();
+        for (int i = 1; i < 11; i++){
+            for (int j = 1; j<31; j++){
+                seats.add(new Seat(i,j));
+            }
+        }
+
+        return seats;
+    }
+
+    public void makeCinemaSetup(){
+        Cinema cinema = new Cinema("Empire Bio", "Guldbergsgade 29F, 2200 København", "35 36 00 36");
+        Hall hall1 = new Hall(1);
+        hall1.setCinema(cinema);
+        hall1.setSeats(makeHallSeats());
+        Hall hall2 = new Hall(2);
+        hall2.setCinema(cinema);
+        hall2.setSeats(makeHallSeats());
+
+        // TODO save to db
+    }
 
     public void makeTestBookings(){}
 
@@ -92,5 +113,6 @@ public class MakeTestData implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         makeUsers();
         makeMovies();
+        makeCinemaSetup();
     }
 }

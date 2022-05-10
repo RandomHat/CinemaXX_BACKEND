@@ -29,8 +29,7 @@ public class Hall {
     private Set<Screening> screenings = new HashSet<>();
 
 
-    public Hall(int id, int hallNo) {
-        this.id = id;
+    public Hall(int hallNo) {
         this.hallNo = hallNo;
     }
 }
