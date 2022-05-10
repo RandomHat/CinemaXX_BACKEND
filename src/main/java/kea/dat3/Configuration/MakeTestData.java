@@ -53,6 +53,7 @@ public class MakeTestData implements ApplicationRunner {
         Map<String, Object> movieMap;
         Movie movie;
         Movie[] movies = new Movie[10];
+        int backupCount = 0;
 
         for (int i = 0; i < movies.length; i++){
             fetcher = new Fetcher("https://api.themoviedb.org/3/movie/" + random.nextInt(1000));
@@ -76,9 +77,13 @@ public class MakeTestData implements ApplicationRunner {
                 e.printStackTrace();
                 movie = null;
                 i--; //Movie not found, rollback i counter to make sure we get 10 movies in total.
+                backupCount++;
             }
             if (movie != null){
                 movies[i] = movie;
+            }
+            if (backupCount >= 20){
+                break;
             }
         }
         movieRepository.saveAll(Arrays.stream(movies).collect(Collectors.toList()));
