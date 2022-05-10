@@ -9,6 +9,9 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  API_TOKEN: ${{ secrets.API_TOKEN }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
