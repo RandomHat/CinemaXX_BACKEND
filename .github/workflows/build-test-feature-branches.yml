@@ -3,6 +3,9 @@ name: Maven CI
 on:
   push:
     branches-ignore: [ main ]
+    
+env:
+  API_TOKEN: ${{ secrets.API_TOKEN }}
 
 jobs:
   build:
@@ -10,8 +13,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - env:
-          API_TOKEN: ${{ secrets.API_TOKEN }}
       - name: Checkout Repository
         uses: actions/checkout@v2
       - name: Set up JDK 11
