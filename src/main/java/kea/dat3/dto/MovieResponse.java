@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class MovieResponse {
 
-    int id;
+    long id;
     String title;
     String genre;
     int ageLimit;
@@ -34,6 +34,8 @@ public class MovieResponse {
         this.overview = movie.getOverview();
         this.rating = movie.getRating();
         this.duration = movie.getDuration();
+        this.id = movie.getId();
+
     }
 
     public static List<MovieResponse> getMoviesFromEntities(List<Movie> movies) {

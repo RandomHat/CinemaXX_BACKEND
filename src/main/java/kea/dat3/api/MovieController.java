@@ -3,8 +3,10 @@ package kea.dat3.api;
 import kea.dat3.dto.MovieRequest;
 import kea.dat3.dto.MovieResponse;
 import kea.dat3.services.MovieService;
+import org.springframework.context.annotation.Role;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @CrossOrigin
@@ -22,10 +24,10 @@ public class MovieController {
     }
 
     @GetMapping("/{id}")
-    public MovieResponse getMovie(@PathVariable long id) throws Exception {
+    @RolesAllowed({"USER","ADMIN"})
+    public MovieResponse getMovieAdmin(@PathVariable long id) throws Exception {
         return movieService.getMovie(id);
     }
-
 
     @PostMapping
     public MovieResponse addMovie(@RequestBody MovieRequest body) {

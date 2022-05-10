@@ -1,5 +1,6 @@
 package kea.dat3.entities;
 
+import kea.dat3.dto.ScreeningRequest;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,7 +25,9 @@ public class Screening {
 
     private int duration;
 
-    private int seat_Reservation_Counter;
+    private LocalDateTime showTime;
+
+    private int seatReservationCounter;
 
 
     @OneToMany(mappedBy = "screening")
@@ -43,10 +46,13 @@ public class Screening {
     @ManyToOne()
     private Hall hall;
 
-    public Screening(int id, LocalDateTime created, int duration, int seat_Reservation_Counter) {
-        this.id = id;
-        this.created = created;
-        this.duration = duration;
-        this.seat_Reservation_Counter = seat_Reservation_Counter;
+    public Screening(ScreeningRequest body){
+        this.showTime = body.getShowTime();
+        this.duration = body.getDuration();
+        this.movie = body.getMovie();
+        this.cinema = body.getCinema();
+        this.createdBy = body.getUsername();
+        this.hall = body.getHall();
+        this.seatReservationCounter = 0;
     }
 }
