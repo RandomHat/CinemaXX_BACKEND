@@ -2,9 +2,10 @@ package kea.dat3.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import kea.dat3.entities.Screening;
+import lombok.Getter;
 
 import java.time.LocalDateTime;
-
+@Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ScreeningResponse {
 
@@ -12,7 +13,6 @@ public class ScreeningResponse {
      LocalDateTime created;
      int duration;
      int seatReservationCounter;
-
      MovieResponse movieResponse;
      StaffResponse staffResponse;
      CinemaResponse cinemaResponse;

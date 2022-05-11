@@ -14,23 +14,21 @@ import java.util.Set;
 @Entity
 public class Hall {
 
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
-
     int hallNo;
 
     @ManyToOne
     Cinema cinema;
 
-    @OneToMany(mappedBy = "hall", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "hall")
     private Set<Seat> seats = new HashSet<>();
 
-    @OneToMany(mappedBy = "hall", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "hall")
     private Set<Screening> screenings = new HashSet<>();
 
 
-    public Hall(int id, int hallNo) {
-        this.id = id;
+    public Hall(int hallNo) {
         this.hallNo = hallNo;
     }
 }

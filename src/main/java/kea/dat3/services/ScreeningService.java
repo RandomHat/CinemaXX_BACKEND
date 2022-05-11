@@ -21,9 +21,9 @@ public class ScreeningService {
         return createResponse(id,isAdmin);
     }
 
-    public ScreeningResponse addScreening(ScreeningRequest body, boolean isAdmin) {
+    public ScreeningResponse addScreening(ScreeningRequest body) {
         Screening screeningNew = screeningRepository.save(new Screening(body));
-        return createResponse(screeningNew.getId(),isAdmin);}
+        return createResponse(screeningNew.getId(),true);}
 
     private ScreeningResponse createResponse(Long id, boolean isAdmin){
         //Error msg handling?
