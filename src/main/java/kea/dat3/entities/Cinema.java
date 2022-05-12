@@ -14,7 +14,7 @@ import java.util.Set;
 @Entity
 public class Cinema {
 
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
     String name;
@@ -35,8 +35,7 @@ public class Cinema {
     )
     Set<Movie> movies = new HashSet<>();
 
-    public Cinema(int id, String name, String address, String phoneNumber) {
-        this.id = id;
+    public Cinema(String name, String address, String phoneNumber) {
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;

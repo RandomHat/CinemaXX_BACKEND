@@ -1,7 +1,9 @@
 package kea.dat3.dto;
 
 import kea.dat3.entities.Hall;
+import lombok.Getter;
 
+@Getter
 public class HallResponse {
 
     int id;
