@@ -3,14 +3,12 @@ package kea.dat3.Configuration;
 import com.fasterxml.jackson.databind.JsonNode;
 import kea.dat3.entities.*;
 import kea.dat3.error.Client4xxException;
-import kea.dat3.repositories.CustomerRepository;
-import kea.dat3.repositories.MovieRepository;
-import kea.dat3.repositories.PersonRepository;
-import kea.dat3.repositories.StaffRepository;
+import kea.dat3.repositories.*;
 import kea.dat3.utils.Fetcher;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 
 import java.net.URISyntaxException;
@@ -20,21 +18,25 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 
-@Controller
+@Component
 @Profile("!test")
 public class MakeTestData implements ApplicationRunner {
 
-    MovieRepository movieRepository;
     PersonRepository personRepository;
     CustomerRepository customerRepository;
     StaffRepository staffRepository;
+    MovieRepository movieRepository;
+    CinemaRepository cinemaRepository;
 
     public MakeTestData(PersonRepository personRepository, CustomerRepository customerRepository,
-                        StaffRepository staffRepository, MovieRepository movieRepository) {
+                        StaffRepository staffRepository, CinemaRepository cinemaRepository,
+                        MovieRepository movieRepository) {
+
         this.personRepository = personRepository;
         this.customerRepository = customerRepository;
         this.staffRepository = staffRepository;
         this.movieRepository = movieRepository;
+        this.cinemaRepository = cinemaRepository;
     }
 
     public void makeUsers() {
@@ -89,11 +91,13 @@ public class MakeTestData implements ApplicationRunner {
         movieRepository.saveAll(Arrays.stream(movies).collect(Collectors.toList()));
     }
 
-    private Set<Seat> makeHallSeats(){
+    private Set<Seat> makeHallSeats(Hall hall){
         Set<Seat> seats = new HashSet<>();
         for (int i = 1; i < 11; i++){
             for (int j = 1; j<31; j++){
-                seats.add(new Seat(i,j));
+                Seat seat = new Seat(i,j);
+                seat.setHall(hall);
+                seats.add(seat);
             }
         }
 
@@ -102,14 +106,18 @@ public class MakeTestData implements ApplicationRunner {
 
     public void makeCinemaSetup(){
         Cinema cinema = new Cinema("Empire Bio", "Guldbergsgade 29F, 2200 København", "35 36 00 36");
+
         Hall hall1 = new Hall(1);
         hall1.setCinema(cinema);
-        hall1.setSeats(makeHallSeats());
+        hall1.getSeats().addAll(makeHallSeats(hall1));
         Hall hall2 = new Hall(2);
         hall2.setCinema(cinema);
-        hall2.setSeats(makeHallSeats());
+        hall2.getSeats().addAll(makeHallSeats(hall2));
 
-        // TODO save to db
+        cinema.getHalls().add(hall1);
+        cinema.getHalls().add(hall2);
+
+        cinemaRepository.save(cinema); // should save all the objects due to cascading.
     }
 
     public void makeTestBookings(){}

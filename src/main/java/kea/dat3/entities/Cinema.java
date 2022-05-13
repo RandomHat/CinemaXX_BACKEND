@@ -14,7 +14,7 @@ import java.util.Set;
 @Entity
 public class Cinema {
 
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
     String name;
