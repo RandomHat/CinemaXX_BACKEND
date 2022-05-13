@@ -15,9 +15,9 @@ public class ScreeningRequest {
 
     private int duration;
     private LocalDateTime showTime;
-    private Movie movie;
-    private Staff username;
-    private Cinema cinema;
-    private Hall hall;
+    private long movieId;
+    private String username;
+    private int cinemaId;
+    private int hallId;
 
 }

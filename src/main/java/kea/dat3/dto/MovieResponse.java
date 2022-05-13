@@ -27,6 +27,7 @@ public class MovieResponse {
     int duration;
 
     public MovieResponse(Movie movie) {
+        this.id = movie.getId();
         this.title = movie.getTitle();
         this.genre = movie.getGenre();
         this.ageLimit = movie.getAgeLimit();
@@ -34,7 +35,6 @@ public class MovieResponse {
         this.overview = movie.getOverview();
         this.rating = movie.getRating();
         this.duration = movie.getDuration();
-        this.id = movie.getId();
 
     }
 

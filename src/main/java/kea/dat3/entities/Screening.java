@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedBy;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -46,13 +47,13 @@ public class Screening {
     @ManyToOne()
     private Hall hall;
 
-    public Screening(ScreeningRequest body){
-        this.showTime = body.getShowTime();
-        this.duration = body.getDuration();
-        this.movie = body.getMovie();
-        this.cinema = body.getCinema();
-        this.createdBy = body.getUsername();
-        this.hall = body.getHall();
+    public Screening(int duration, LocalDateTime showTime, Movie movie, Cinema cinema, Hall hall, Staff staff){
+        this.duration = duration;
+        this.showTime = showTime;
+        this.movie = movie;
+        this.cinema = cinema;
+        this.createdBy = staff;
+        this.hall = hall;
         this.seatReservationCounter = 0;
     }
 }

@@ -63,13 +63,13 @@ class ScreeningServiceTest {
         Hall hallGet1 = hallRepository.getById(hall1);
         Staff staffGet1 = staffRepository.getById(staff1);
         Cinema cinemaGet1 = cinemaRepository.getById(cinema1);
-        ScreeningRequest screeningRequest = new ScreeningRequest(2, LocalDateTime.of(2022,5,11,10,30),movieGet1,staffGet1,cinemaGet1,hallGet1);
-        screeningRepository.save(new Screening(screeningRequest));
+        Screening screening = new Screening(2, LocalDateTime.of(2022,5,11,10,30),movieGet1,cinemaGet1,hallGet1,staffGet1);
+        screeningRepository.save(screening);
     }
 
     @BeforeEach
     void setup(){
-        screeningService = new ScreeningService(screeningRepository);
+        screeningService = new ScreeningService(screeningRepository,movieRepository,hallRepository,cinemaRepository,staffRepository);
     }
 
     @Test
@@ -105,7 +105,7 @@ class ScreeningServiceTest {
         Hall hallGet2 = hallRepository.getById(hall1);
         Staff staffGet2 = staffRepository.getById(staff1);
         Cinema cinemaGet2 = cinemaRepository.getById(cinema1);
-        ScreeningRequest screeningRequest = new ScreeningRequest(2, LocalDateTime.of(2022,5,11,10,30),movieGet2,staffGet2,cinemaGet2,hallGet2);
+        ScreeningRequest screeningRequest = new ScreeningRequest(2, LocalDateTime.of(2022,5,11,10,30),movie1,staff1,cinema1,hall1);
 
         int repoSizeBeforeAdd = screeningRepository.findAll().size();
 
