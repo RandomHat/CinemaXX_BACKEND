@@ -9,8 +9,11 @@ public class HallResponse {
     int id;
     int hallNo;
 
+    int numberOfSeats;
+
     public HallResponse(Hall body){
         this.id = body.getId();
         this.hallNo = body.getHallNo();
+        this.numberOfSeats = body.numberOfSeats();
     }
 }
