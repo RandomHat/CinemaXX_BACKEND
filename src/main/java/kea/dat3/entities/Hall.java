@@ -16,19 +16,16 @@ public class Hall {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
-
     int hallNo;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH})
     Cinema cinema;
 
-    @OneToMany(mappedBy = "hall", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "hall", cascade = CascadeType.ALL)
     private Set<Seat> seats = new HashSet<>();
 
-    @OneToMany(mappedBy = "hall", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "hall")
     private Set<Screening> screenings = new HashSet<>();
-
-
 
     public Hall(int hallNo) {
         this.hallNo = hallNo;

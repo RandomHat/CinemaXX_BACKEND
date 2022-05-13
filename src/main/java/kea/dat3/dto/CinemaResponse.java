@@ -1,7 +1,9 @@
 package kea.dat3.dto;
 
 import kea.dat3.entities.Cinema;
+import lombok.Getter;
 
+@Getter
 public class CinemaResponse {
 
     int id;

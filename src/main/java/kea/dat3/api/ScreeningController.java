@@ -25,6 +25,6 @@ public class ScreeningController {
     @PostMapping()
     @RolesAllowed("ADMIN")
     public ScreeningResponse addScreening(@RequestBody ScreeningRequest body){
-        return screeningService.addScreening(body, true);
+        return screeningService.addScreening(body);
     }
 }
