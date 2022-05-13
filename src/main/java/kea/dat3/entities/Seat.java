@@ -14,20 +14,35 @@ import java.util.Set;
 @Entity
 public class Seat {
 
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
     int rowNo;
     int seatNo;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     Hall hall;
 
     @OneToMany(mappedBy = "seat", fetch = FetchType.EAGER)
     private Set<Reservation> reservations = new HashSet<>();
 
-    public Seat(int id, int rowNo, int seatNo) {
-        this.id = id;
+    /*
+    Following is utility methods to manage the bidirectional relationship, since it falls to us
+    to make sure that both sides of the relationship is in sync.
+    https://medium.com/@rajibrath20/the-best-way-to-map-a-onetomany-relationship-with-jpa-and-hibernate-dbbf6dba00d3
+     */
+
+    public void addReservation(Reservation reservation){
+        reservations.add(reservation);
+        reservation.setSeat(this);
+    }
+
+    public void removeReservation(Reservation reservation){
+        reservations.remove(reservation);
+        reservation.setSeat(null);
+    }
+
+    public Seat(int rowNo, int seatNo) {
         this.rowNo = rowNo;
         this.seatNo = seatNo;
     }
