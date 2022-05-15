@@ -30,4 +30,8 @@ public class Hall {
     public Hall(int hallNo) {
         this.hallNo = hallNo;
     }
+
+    public int numberOfSeats(){
+        return seats.size();
+    }
 }
