@@ -7,6 +7,7 @@ import kea.dat3.services.PersonService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -46,6 +47,7 @@ public class PersonController {
     }
 
     @GetMapping("/staff/{username}")
+    @RolesAllowed("ADMIN")
     public StaffResponse getStaff(@PathVariable String username)  {
         return personService.getStaff(username);
     }
