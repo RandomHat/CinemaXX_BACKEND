@@ -2,10 +2,12 @@ package kea.dat3.api;
 
 import kea.dat3.dto.PersonRequest;
 import kea.dat3.dto.PersonResponse;
+import kea.dat3.dto.StaffResponse;
 import kea.dat3.services.PersonService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -42,5 +44,11 @@ public class PersonController {
     @DeleteMapping("/{username}")
     public void deletePerson(@PathVariable String username){
         personService.deletePerson(username);
+    }
+
+    @GetMapping("/staff/{username}")
+    @RolesAllowed("ADMIN")
+    public StaffResponse getStaff(@PathVariable String username)  {
+        return personService.getStaff(username);
     }
 }

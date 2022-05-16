@@ -2,9 +2,13 @@ package kea.dat3.services;
 
 import kea.dat3.dto.PersonRequest;
 import kea.dat3.dto.PersonResponse;
+import kea.dat3.dto.StaffResponse;
+import kea.dat3.entities.Staff;
+import kea.dat3.error.Client4xxException;
 import kea.dat3.repositories.PersonRepository;
 import kea.dat3.entities.Person;
 import kea.dat3.entities.Role;
+import kea.dat3.repositories.StaffRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -15,10 +19,12 @@ import java.util.List;
 public class PersonService {
 
     PersonRepository personRepository;
+    StaffRepository staffRepository;
 
 
-    public PersonService(PersonRepository personRepository) {
+    public PersonService(PersonRepository personRepository, StaffRepository staffRepository) {
         this.personRepository = personRepository;
+        this.staffRepository = staffRepository;
     }
 
     public PersonResponse addPerson(PersonRequest body) {
@@ -57,4 +63,8 @@ public class PersonService {
         personRepository.delete(person);
     }
 
+    public StaffResponse getStaff(String id) {
+        Staff staff = staffRepository.findById(id).orElseThrow(() -> new Client4xxException("Staff with id '" + id + "' not found", HttpStatus.NOT_FOUND));
+        return new StaffResponse(staff);
+    }
 }
