@@ -1,6 +1,5 @@
 package kea.dat3.dto;
 
-import kea.dat3.entities.Customer;
 import kea.dat3.entities.Reservation;
 import kea.dat3.entities.Screening;
 import kea.dat3.entities.Seat;
@@ -35,7 +34,7 @@ public class ReservationResponse {
         }
     }
 
-    public List<ReservationResponse> getResponsesFromEntities(List<Reservation> reservations, boolean isAdmin){
+    public static List<ReservationResponse> getResponsesFromEntities(List<Reservation> reservations, boolean isAdmin){
         return reservations.stream().map( reservation -> new ReservationResponse(reservation, isAdmin)).collect(Collectors.toList());
     }
 }
