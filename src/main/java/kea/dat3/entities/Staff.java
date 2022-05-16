@@ -27,4 +27,8 @@ public class Staff extends Person {
     }
 
 
+    public void addScreening(Screening screening) {
+        screeningsCreated.add(screening);
+        screening.setCreatedBy(this);
+    }
 }

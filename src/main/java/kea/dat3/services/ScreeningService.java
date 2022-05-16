@@ -55,4 +55,9 @@ public class ScreeningService {
 
         return new Screening(duration,showtime,movie,cinema,hall,staff);
     }
+
+    public List<ScreeningResponse> getScreenings() {
+        return ScreeningResponse.getScreeningFromEntities(screeningRepository.findAll());
+    }
+
 }

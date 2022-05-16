@@ -34,4 +34,9 @@ public class Hall {
     public int numberOfSeats(){
         return seats.size();
     }
+
+    public void addScreening(Screening screening) {
+        screenings.add(screening);
+        screening.setHall(this);
+    }
 }

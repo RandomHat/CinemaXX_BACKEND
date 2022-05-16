@@ -55,5 +55,17 @@ public class Screening {
         this.createdBy = staff;
         this.hall = hall;
         this.seatReservationCounter = 0;
+        movie.addScreening(this);
+        cinema.addScreening(this);
+        hall.addScreening(this);
+        staff.addScreening(this);
     }
+
+    public void incrementSeatReservationCounter(){
+        this.seatReservationCounter++;
+    }
+    public void decrementSeatReservationCounter(){
+        this.seatReservationCounter--;
+    }
+
 }

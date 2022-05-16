@@ -40,4 +40,9 @@ public class Cinema {
         this.address = address;
         this.phoneNumber = phoneNumber;
     }
+
+    public void addScreening(Screening screening) {
+        screenings.add(screening);
+        screening.setCinema(this);
+    }
 }

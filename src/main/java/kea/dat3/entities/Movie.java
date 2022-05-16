@@ -37,6 +37,15 @@ public class Movie {
     @ManyToMany(mappedBy = "movies")
     private Set<Cinema> cinemas = new HashSet<>();
 
+    public void addScreening(Screening screening){
+        screenings.add(screening);
+        screening.setMovie(this);
+    }
+
+    public void removeScreening(Screening screening){
+        screenings.remove(screening);
+        screening.setMovie(null);
+    }
     public Movie(String title, String genre, int ageLimit, String cover, String overview, LocalDate releaseDate, double rating, int duration) {
         this.title = title;
         this.genre = genre;
