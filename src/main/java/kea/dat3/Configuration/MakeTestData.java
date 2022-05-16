@@ -2,7 +2,6 @@ package kea.dat3.Configuration;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import kea.dat3.entities.*;
-import kea.dat3.error.Client4xxException;
 import kea.dat3.repositories.*;
 import kea.dat3.utils.Fetcher;
 import org.springframework.boot.ApplicationArguments;
@@ -46,7 +45,6 @@ public class MakeTestData implements ApplicationRunner {
         customerRepository.save(cust1);
         customerRepository.save(cust2);
         staffRepository.save(staff);
-        System.out.println("CREATED " + personRepository.count() + " TEST PERSONS");
     }
 
     public void makeMovies(){
