@@ -35,6 +35,16 @@ public class Customer extends Person{
         this.addRole(Role.USER);
     }
 
+    public void addReservation(Reservation reservation){
+        reservations.add(reservation);
+        reservation.setCustomer(this);
+    }
+
+    public void removeReservation(Reservation reservation){
+        reservations.remove(reservation);
+        reservation.setCustomer(null);
+    }
+
     @CreationTimestamp
     private LocalDateTime created;
 

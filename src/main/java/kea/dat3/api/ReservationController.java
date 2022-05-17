@@ -8,7 +8,7 @@ import javax.annotation.security.RolesAllowed;
 import java.security.Principal;
 import java.util.List;
 
-@RolesAllowed({"USER, ADMIN"})
+
 @RestController
 @RequestMapping("api/reservations")
 public class ReservationController {
@@ -19,7 +19,7 @@ public class ReservationController {
         this.reservationService = reservationService;
     }
 
-    @GetMapping("/")
+    @GetMapping()
     public List<ReservationResponse> getReservations(Principal principal){
        return reservationService.getUserReservations(principal);
     }
