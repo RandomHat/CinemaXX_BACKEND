@@ -48,6 +48,9 @@ public class Person implements UserWithPassword {
         this.password = pwEncoder.encode(password);
     }
 
+    public boolean isAdmin(){
+        return roles.contains(Role.ADMIN);
+    }
 
   public Person(String email, String username, String password) {
     this.email = email;

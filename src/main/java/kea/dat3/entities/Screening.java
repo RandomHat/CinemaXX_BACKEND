@@ -32,7 +32,7 @@ public class Screening {
 
 
     @OneToMany(mappedBy = "screening")
-    private Set<Reservation> screenings = new HashSet<>();
+    private Set<Reservation> reservations = new HashSet<>();
 
 
     @ManyToOne()
@@ -46,6 +46,16 @@ public class Screening {
 
     @ManyToOne()
     private Hall hall;
+
+    public void addReservation(Reservation reservation){
+        reservations.add(reservation);
+        reservation.setScreening(this);
+    }
+
+    public void removeReservation(Reservation reservation){
+        reservations.remove(reservation);
+        reservation.setScreening(null);
+    }
 
     public Screening(int duration, LocalDateTime showTime, Movie movie, Cinema cinema, Hall hall, Staff staff){
         this.duration = duration;

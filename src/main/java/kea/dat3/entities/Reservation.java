@@ -33,5 +33,11 @@ public class Reservation {
 
     @UpdateTimestamp
     private LocalDateTime updated;
+
+    public Reservation(Seat seat, Screening screening, Customer customer) {
+        this.seat = seat;
+        this.screening = screening;
+        this.customer = customer;
+    }
 }
 

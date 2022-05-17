@@ -40,12 +40,6 @@ class CustomerRepositoryTest {
         assertFalse(failedResult);
     }
 
-    /*
-
-    @Test
-    void
-*/
-
     // TODO: repository tests with h2 database
 
 }
