@@ -70,6 +70,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/error").permitAll()
                 //.antMatchers(HttpMethod.GET, "/api/message/all").permitAll() //Disables security on dummyRoleController
                 .antMatchers(HttpMethod.GET, "/index.html").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/movies").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/movies/*").permitAll()
                 // All other endpoints are private
                 .anyRequest().authenticated();
                 //.anyRequest().permitAll();  //Disable Security

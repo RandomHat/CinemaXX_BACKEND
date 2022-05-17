@@ -24,17 +24,18 @@ public class MovieController {
     }
 
     @GetMapping("/{id}")
-    @RolesAllowed({"USER","ADMIN"})
     public MovieResponse getMovieAdmin(@PathVariable long id) throws Exception {
         return movieService.getMovie(id);
     }
 
     @PostMapping
+    @RolesAllowed("ADMIN")
     public MovieResponse addMovie(@RequestBody MovieRequest body) {
         return movieService.addMovie(body);
     }
 
     @DeleteMapping("/{id}")
+    @RolesAllowed("ADMIN")
     public void deleteMovie(@PathVariable long id) {
         movieService.deleteMovie(id);
     }
