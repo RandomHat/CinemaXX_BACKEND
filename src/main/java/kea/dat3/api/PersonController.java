@@ -1,8 +1,6 @@
 package kea.dat3.api;
 
-import kea.dat3.dto.PersonRequest;
-import kea.dat3.dto.PersonResponse;
-import kea.dat3.dto.StaffResponse;
+import kea.dat3.dto.*;
 import kea.dat3.services.PersonService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +24,10 @@ public class PersonController {
         return ResponseEntity.ok(personService.addPerson(body));
     }
 
+    @PostMapping("/customer")
+    public ResponseEntity<CustomerResponse> addCustomer(@RequestBody @Valid CustomerRequest body) {
+        return ResponseEntity.ok(personService.addCustomer(body));
+    }
     @GetMapping
     public List<PersonResponse> getPersons(){
         return personService.getPersons();

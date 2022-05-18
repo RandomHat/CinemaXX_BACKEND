@@ -73,5 +73,4 @@ public class Screening {
     public void decrementSeatReservationCounter(){
         this.seatReservationCounter--;
     }
-
 }

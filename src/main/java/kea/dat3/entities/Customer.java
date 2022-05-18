@@ -1,5 +1,6 @@
 package kea.dat3.entities;
 
+import kea.dat3.dto.CustomerRequest;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -32,6 +33,14 @@ public class Customer extends Person{
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
+        this.addRole(Role.USER);
+    }
+
+    public Customer(CustomerRequest body) {
+        super(body.getEmail(), body.getUsername(), body.getPassword());
+        this.firstName = body.getFirstName();
+        this.lastName = body.getLastName();
+        this.phoneNumber = body.getPhoneNumber();
         this.addRole(Role.USER);
     }
 

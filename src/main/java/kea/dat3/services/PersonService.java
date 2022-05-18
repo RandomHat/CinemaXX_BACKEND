@@ -1,10 +1,10 @@
 package kea.dat3.services;
 
-import kea.dat3.dto.PersonRequest;
-import kea.dat3.dto.PersonResponse;
-import kea.dat3.dto.StaffResponse;
+import kea.dat3.dto.*;
+import kea.dat3.entities.Customer;
 import kea.dat3.entities.Staff;
 import kea.dat3.error.Client4xxException;
+import kea.dat3.repositories.CustomerRepository;
 import kea.dat3.repositories.PersonRepository;
 import kea.dat3.entities.Person;
 import kea.dat3.entities.Role;
@@ -19,12 +19,14 @@ import java.util.List;
 public class PersonService {
 
     PersonRepository personRepository;
+    CustomerRepository customerRepository;
     StaffRepository staffRepository;
 
 
-    public PersonService(PersonRepository personRepository, StaffRepository staffRepository) {
+    public PersonService(PersonRepository personRepository, StaffRepository staffRepository, CustomerRepository customerRepository) {
         this.personRepository = personRepository;
         this.staffRepository = staffRepository;
+        this.customerRepository = customerRepository;
     }
 
     public PersonResponse addPerson(PersonRequest body) {
@@ -66,5 +68,12 @@ public class PersonService {
     public StaffResponse getStaff(String id) {
         Staff staff = staffRepository.findById(id).orElseThrow(() -> new Client4xxException("Staff with id '" + id + "' not found", HttpStatus.NOT_FOUND));
         return new StaffResponse(staff);
+    }
+
+    public CustomerResponse addCustomer(CustomerRequest body) {
+        Customer customer = new Customer(body);
+        customer.addRole(Role.USER);
+        customer = customerRepository.save(customer);
+        return new CustomerResponse(customer);
     }
 }
