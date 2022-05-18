@@ -5,7 +5,8 @@ We finished rooting out issues with entities and JPA associations. Screenings is
 # A section "Who did what" with a section for each member in the group, written by each member, explaining what you specifically did in this sprint.
 
 ## Mark
-
+Made the backend for screenings, and started on the frontend for the screenings.
+Including DTO's for the creation of screenings.
 ## Simon
 
 ## Murat
