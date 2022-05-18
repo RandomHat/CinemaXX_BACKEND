@@ -33,6 +33,8 @@ class ScreeningServiceTest {
     @Autowired
     CinemaRepository cinemaRepository;
 
+    @Autowired
+    ReservationRepository reservationRepository;
     ScreeningService screeningService;
 
     static Long movie1, movie2;
@@ -40,8 +42,12 @@ class ScreeningServiceTest {
     static String staff1, staff2;
     static int cinema1, cinema2;
 
+    static Long screening1;
+
     @BeforeAll
-    static void beforeAllSetup(@Autowired ScreeningRepository screeningRepository, @Autowired MovieRepository movieRepository, @Autowired HallRepository hallRepository, @Autowired StaffRepository staffRepository, @Autowired CinemaRepository cinemaRepository){
+    static void beforeAllSetup(@Autowired ScreeningRepository screeningRepository, @Autowired MovieRepository movieRepository, @Autowired HallRepository hallRepository, @Autowired StaffRepository staffRepository, @Autowired CinemaRepository cinemaRepository, @Autowired ReservationRepository reservationRepository){
+        reservationRepository.deleteAll();
+        screeningRepository.deleteAll();
         movieRepository.deleteAll();
         hallRepository.deleteAll();
         staffRepository.deleteAll();
@@ -64,7 +70,7 @@ class ScreeningServiceTest {
         Staff staffGet1 = staffRepository.getById(staff1);
         Cinema cinemaGet1 = cinemaRepository.getById(cinema1);
         Screening screening = new Screening(2, LocalDateTime.of(2022,5,11,10,30),movieGet1,cinemaGet1,hallGet1,staffGet1);
-        screeningRepository.save(screening);
+        screening1 = screeningRepository.save(screening).getId();
     }
 
     @BeforeEach
@@ -77,11 +83,11 @@ class ScreeningServiceTest {
         //Arrange
         String staffWorkerId = staffRepository.getById(staff1).getWorkerId();
         String cinemaName = cinemaRepository.getById(cinema1).getName();
-        Screening screeningGet = screeningRepository.getById(1L);
+        Screening screeningGet = screeningRepository.getById(screening1);
 
         //Act
-        ScreeningResponse screeningAdmin = screeningService.getScreening(1L,true);
-        ScreeningResponse screeningUser = screeningService.getScreening(1L,false);
+        ScreeningResponse screeningAdmin = screeningService.getScreening(screening1,true);
+        ScreeningResponse screeningUser = screeningService.getScreening(screening1,false);
 
         //Assert
         // check ID
@@ -101,10 +107,6 @@ class ScreeningServiceTest {
     @Test
     void testAddScreening() {
         //Arrange
-        Movie movieGet2 = movieRepository.getById(movie1);
-        Hall hallGet2 = hallRepository.getById(hall1);
-        Staff staffGet2 = staffRepository.getById(staff1);
-        Cinema cinemaGet2 = cinemaRepository.getById(cinema1);
         ScreeningRequest screeningRequest = new ScreeningRequest(2, LocalDateTime.of(2022,5,11,10,30),movie1,staff1,cinema1,hall1);
 
         int repoSizeBeforeAdd = screeningRepository.findAll().size();
@@ -116,7 +118,7 @@ class ScreeningServiceTest {
         //Assert
         assertEquals(1,repoSizeBeforeAdd);
         assertEquals(2,screeningRepository.findAll().size());
-        assertEquals(2L,screeningNew.getId());
+        assertEquals(2,screeningNew.getDuration());
 
     }
 }

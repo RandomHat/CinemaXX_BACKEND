@@ -52,19 +52,22 @@ public class ReservationServiceTest {
 
     @BeforeAll
     static void setup(
-            @Autowired PersonRepository personRepository,
             @Autowired CustomerRepository customerRepository,
             @Autowired MovieRepository movieRepository,
             @Autowired ScreeningRepository screeningRepository,
             @Autowired ReservationRepository reservationRepository
     ){
+        customerRepository.deleteAll();
+        movieRepository.deleteAll();
+        screeningRepository.deleteAll();
+        reservationRepository.deleteAll();
+
         customer = customerRepository.save(new Customer("test", "mctest", "12345678","test@mail.dk", "test12"));
         movie = movieRepository.save(new Movie("title", "genre", 15, "cover", "overview", LocalDate.of(2022, 5, 16), 10L, 90 ));
         screening = screeningRepository.save(new Screening(90, LocalDateTime.of(2022, 6, 20, 19,30), movie, null, null, null));
         reservation = reservationRepository.save(new Reservation(null, screening, customer));
         screening.addReservation(reservation);
         customer.addReservation(reservation);
-
     }
     @Test
     public void reservationsLoadsByCurrentUser(){
