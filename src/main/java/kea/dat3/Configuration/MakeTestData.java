@@ -4,36 +4,33 @@ import com.fasterxml.jackson.databind.JsonNode;
 import kea.dat3.entities.*;
 import kea.dat3.repositories.*;
 import kea.dat3.utils.Fetcher;
+import lombok.AllArgsConstructor;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
 
 @Component
+@AllArgsConstructor
 @Profile("!test")
+@Transactional
 public class MakeTestData implements ApplicationRunner {
 
     PersonRepository personRepository;
     CustomerRepository customerRepository;
+    ScreeningRepository screeningRepository;
     StaffRepository staffRepository;
     MovieRepository movieRepository;
     CinemaRepository cinemaRepository;
 
-    public MakeTestData(PersonRepository personRepository, CustomerRepository customerRepository,
-                        StaffRepository staffRepository, CinemaRepository cinemaRepository,
-                        MovieRepository movieRepository) {
 
-        this.personRepository = personRepository;
-        this.customerRepository = customerRepository;
-        this.staffRepository = staffRepository;
-        this.movieRepository = movieRepository;
-        this.cinemaRepository = cinemaRepository;
-    }
 
     public void makeUsers() {
         Customer cust1 = new Customer("user", "McUser", "12345678", "user@mail.dk", "test12");
@@ -115,12 +112,31 @@ public class MakeTestData implements ApplicationRunner {
         cinemaRepository.save(cinema); // should save all the objects due to cascading.
     }
 
-    public void makeTestBookings(){}
+    public void makeScreenings(){
+        List<Screening> newScreenings = new ArrayList<>();
+        Staff staff = staffRepository.getById("user_admin");
+        Cinema cinema = cinemaRepository.getById(1);
+        Hall hall = (Hall) cinema.getHalls().toArray()[0];
+
+        for (long i = 1; i <= 10; i++){
+            Movie movie = movieRepository.getById(i);
+            Screening screening = new Screening(
+                    (movie.getDuration() + 15),
+                    LocalDateTime.of(2022, 5, 19 + (int) i, 19, 30),
+                    movie, cinema, hall, staff);
+            movie.addScreening(screening);
+            hall.addScreening(screening);
+            staff.addScreening(screening);
+            newScreenings.add(screening);
+        }
+        screeningRepository.saveAll(newScreenings);
+    }
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
         makeUsers();
         makeMovies();
         makeCinemaSetup();
+        makeScreenings();
     }
 }
