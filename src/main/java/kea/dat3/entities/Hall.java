@@ -24,7 +24,7 @@ public class Hall {
     @OneToMany(mappedBy = "hall", cascade = CascadeType.ALL)
     private Set<Seat> seats = new HashSet<>();
 
-    @OneToMany(mappedBy = "hall")
+    @OneToMany(mappedBy = "hall", cascade = CascadeType.ALL)
     private Set<Screening> screenings = new HashSet<>();
 
     public Hall(int hallNo) {

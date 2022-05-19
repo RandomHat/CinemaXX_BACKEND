@@ -24,7 +24,7 @@ public class Cinema {
     @OneToMany(mappedBy = "cinema", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Hall> halls = new HashSet<>();
 
-    @OneToMany(mappedBy = "cinema", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "cinema", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Screening> screenings = new HashSet<>();
 
     @ManyToMany(cascade = {CascadeType.ALL})
