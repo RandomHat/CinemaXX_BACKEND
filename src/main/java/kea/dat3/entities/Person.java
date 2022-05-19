@@ -2,6 +2,7 @@ package kea.dat3.entities;
 
 import kea.dat3.security.UserWithPassword;
 import kea.dat3.dto.PersonRequest;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,6 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@EqualsAndHashCode
 @Entity
 @Inheritance(
         strategy = InheritanceType.JOINED

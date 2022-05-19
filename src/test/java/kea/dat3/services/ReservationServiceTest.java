@@ -54,12 +54,12 @@ public class ReservationServiceTest {
 
     @BeforeAll
     static void setup(
-            @Autowired PersonRepository personRepository,
             @Autowired CustomerRepository customerRepository,
             @Autowired MovieRepository movieRepository,
             @Autowired ScreeningRepository screeningRepository,
             @Autowired ReservationRepository reservationRepository
     ){
+      
         reservationRepository.deleteAll();
         screeningRepository.deleteAll();
         customerRepository.deleteAll();
@@ -71,7 +71,6 @@ public class ReservationServiceTest {
         reservation = reservationRepository.save(new Reservation(null, screening, customer));
         screening.addReservation(reservation);
         customer.addReservation(reservation);
-
     }
     @Test
     public void reservationsLoadsByCurrentUser(){
