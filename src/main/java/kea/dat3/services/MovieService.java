@@ -3,7 +3,9 @@ package kea.dat3.services;
 import kea.dat3.dto.MovieRequest;
 import kea.dat3.dto.MovieResponse;
 import kea.dat3.entities.Movie;
+import kea.dat3.error.Client4xxException;
 import kea.dat3.repositories.MovieRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,9 +24,8 @@ public class MovieService {
         return MovieResponse.getMoviesFromEntities(movies);
     }
 
-    //RuntimeException to be changed to custom error
     public MovieResponse getMovie(long id) throws Exception {
-        Movie movie = movieRepository.findById(id).orElseThrow(() -> new RuntimeException());
+        Movie movie = movieRepository.findById(id).orElseThrow(() -> new Client4xxException("No car with provided ID found", HttpStatus.NOT_FOUND));
         return new MovieResponse(movie);
     }
 
@@ -33,9 +34,8 @@ public class MovieService {
         return new MovieResponse(newMovie);
     }
 
-    //RuntimeException to be changed to custom error
     public void deleteMovie(long movieId) {
-        Movie movie = movieRepository.findById(movieId).orElseThrow(() -> new RuntimeException());
+        Movie movie = movieRepository.findById(movieId).orElseThrow(() -> new Client4xxException("No car with provided ID found", HttpStatus.NOT_FOUND));
         try {
             movieRepository.delete(movie);
         } catch (Exception ex) {
