@@ -4,29 +4,36 @@ import kea.dat3.entities.Reservation;
 import kea.dat3.entities.Screening;
 import kea.dat3.entities.Seat;
 import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Getter
+@Setter
+@ToString
 public class ReservationResponse {
 
-    private final long id;
+    private long id;
 
-    private final Seat seat;
+    //private Seat seat; TODO Implement seat.
 
-    private final Screening screening;
+    private String movieTitle;
 
-    private final String customerEmail;
+    private LocalDateTime showTime;
 
-    private LocalDateTime created = null;
-    private LocalDateTime updated = null;
+    private String customerEmail;
+
+    private LocalDateTime created;
+    private LocalDateTime updated;
 
     public ReservationResponse(Reservation reservation, Boolean isAdmin){
         this.id = reservation.getId();
-        this.seat = reservation.getSeat();
-        this.screening = reservation.getScreening();
+        //this.seat = reservation.getSeat();
+        this.movieTitle = reservation.getScreening().getMovie().getTitle();
+        this.showTime = reservation.getScreening().getShowTime();
         this.customerEmail = reservation.getCustomer().getEmail();
         if (isAdmin){
             this.created = reservation.getCreated();

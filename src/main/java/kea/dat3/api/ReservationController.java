@@ -34,7 +34,7 @@ public class ReservationController {
         return reservationService.getAllReservations();
     }
 
-    @PostMapping("/create-reservations")
+    @PostMapping()
     public List<ReservationResponse> makeReservations(@RequestBody ReservationRequest request, Principal principal){
         return reservationService.makeReservations(request, principal);
     }

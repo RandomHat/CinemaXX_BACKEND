@@ -6,6 +6,7 @@ import kea.dat3.repositories.*;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -28,6 +29,11 @@ public class ScreeningService {
 
     public ScreeningResponse getScreening(Long id, boolean isAdmin){
         return createResponse(id,isAdmin);
+    }
+
+    // TODO: change to use createResponse or refactor createResponse to use Constructor in ScreeningResponse
+    public List<ScreeningResponse> getScreeningsByMovie(long id) {
+        return ScreeningResponse.getScreeningFromEntities(new ArrayList<>(movieRepository.getById(id).getScreenings()));
     }
 
     public ScreeningResponse addScreening(ScreeningRequest body) {
