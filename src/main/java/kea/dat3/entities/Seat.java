@@ -23,7 +23,7 @@ public class Seat {
     @ManyToOne(fetch = FetchType.LAZY)
     Hall hall;
 
-    @OneToMany(mappedBy = "seat", fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH, CascadeType.MERGE})
+    @OneToMany(mappedBy = "seat", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Reservation> reservations = new HashSet<>();
 
     /*
