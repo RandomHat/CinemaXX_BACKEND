@@ -1,6 +1,8 @@
 package kea.dat3.entities;
 
+
 import kea.dat3.dto.CustomerRequest;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,6 +17,7 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 @Entity
 public class Customer extends Person{
 
@@ -23,9 +26,11 @@ public class Customer extends Person{
     private String phoneNumber;
 
     @OneToMany(mappedBy = "customer", cascade = {CascadeType.ALL})
+    @EqualsAndHashCode.Exclude
     private Set<Reservation> reservations = new HashSet<>();
 
     @OneToMany(mappedBy = "customer", cascade = {CascadeType.ALL})
+    @EqualsAndHashCode.Exclude
     private Set<Ticket> tickets = new HashSet<>();
 
     public Customer(String firstName, String lastName, String phoneNumber, String email, String password){
