@@ -4,7 +4,6 @@ import kea.dat3.dto.MovieRequest;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -31,10 +30,16 @@ public class Movie {
     private double rating;
     private int duration;
 
-    @OneToMany(mappedBy = "movie")
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
     Set<Screening> screenings = new HashSet<>();
 
-    @ManyToMany(mappedBy = "movies")
+    // Fixes a data integrity violation when removing Movies.
+    @PreRemove
+    private void preRemove() {
+        screenings.forEach( screening -> screening.setMovie(null));
+    }
+
+    @ManyToMany(mappedBy = "movies", cascade = CascadeType.ALL)
     private Set<Cinema> cinemas = new HashSet<>();
 
     public void addScreening(Screening screening){

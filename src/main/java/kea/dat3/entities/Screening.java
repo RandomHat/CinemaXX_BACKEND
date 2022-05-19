@@ -31,7 +31,7 @@ public class Screening {
     private int seatReservationCounter;
 
 
-    @OneToMany(mappedBy = "screening")
+    @OneToMany(mappedBy = "screening", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Reservation> reservations = new HashSet<>();
 
 

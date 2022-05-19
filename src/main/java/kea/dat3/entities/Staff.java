@@ -17,7 +17,7 @@ public class Staff extends Person {
     @Column(nullable = false, unique = true, name = "worker_id" )
     private String workerId;
 
-    @OneToMany(mappedBy = "createdBy")
+    @OneToMany(mappedBy = "createdBy", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     Set<Screening> screeningsCreated = new HashSet<>();
 
     public Staff(String email, String username, String password, String workerId){
