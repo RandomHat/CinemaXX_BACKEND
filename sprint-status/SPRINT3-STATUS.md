@@ -14,6 +14,9 @@
 * implemented front-end functionality for reservation.
 
 ### Murat
+* Finishing touches for the FrontEnd landing page, so it shows the movies we have in our Database.
+* Making a details page for the individual movie with the required information present.
+* Completing MovieController and MovieService
 
 ## A list of sprint tasks you expect to complete in Sprint-3
 * Focus on frontend
