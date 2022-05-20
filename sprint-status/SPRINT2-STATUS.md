@@ -7,6 +7,7 @@ We finished rooting out issues with entities and JPA associations. Screenings is
 ## Mark
 Made the backend for screenings, and started on the frontend for the screenings.
 Including DTO's for the creation of screenings.
+ServiceTests for screenings
 ## Simon
 
 ## Murat
