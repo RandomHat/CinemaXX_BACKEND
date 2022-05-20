@@ -9,6 +9,9 @@ We finished rooting out issues with entities and JPA associations. Screenings is
 * DTO's for the creation of screenings.
 * ServiceTests for screenings
 ## Simon
+* fiddle with entities and JPA cascade
+* Make halls/Screens test data.
+* fix api-key issues, added api key to gh-actions environment.
 
 ## Murat
 
