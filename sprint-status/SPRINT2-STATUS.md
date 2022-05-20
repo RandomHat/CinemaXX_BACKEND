@@ -14,6 +14,9 @@ We finished rooting out issues with entities and JPA associations. Screenings is
 * fix api-key issues, added api key to gh-actions environment.
 
 ## Murat
+* Making a template for the Home Page in the FrontEnd, that displays some "random" movies.
+* Scaffolding the Endpoints, the DTO's and the Service layer for the project for Cinema
+* Made the CinemaRepository
 
 # A list of sprint tasks you expect to complete in Sprint-2
 We want to have the Landing page done, aswell as the individual screenings for movies.
