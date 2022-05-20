@@ -7,13 +7,12 @@
 * created frontend for Screening Creation
 * created backend and frontend for customer/account creation
 * refactored some tests to work as intended
-* 
 
 ### Simon
 * Created reservation controller
 * reservation service
 * implemented front-end functionality for reservation.
-* 
+
 ### Murat
 
 ## A list of sprint tasks you expect to complete in Sprint-3
