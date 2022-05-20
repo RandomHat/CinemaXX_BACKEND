@@ -24,3 +24,6 @@
   * Adding forms for creation of Reservation, Screening, Accountcreation
   * Possibility to see detailed information about a movie
 * Finishing MVP of given usecases
+
+## Video of Project
+https://youtu.be/DqG2JigsHKQ
