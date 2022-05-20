@@ -20,6 +20,9 @@ https://cinema-xx.azurewebsites.net
 ## Description of Sprint commitments (backend & frontend)
 Refer to the last point in this README for commitments, which will be changing depending on how far we are in the project.
 
+## Video of Project
+https://youtu.be/DqG2JigsHKQ
+
 ## Frontend Repository Link
 https://github.com/Buttersail/CinemaXX_FRONTEND
 
