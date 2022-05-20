@@ -18,6 +18,9 @@ public class ScreeningController {
         this.screeningService = screeningService;
     }
 
+    @GetMapping("/movie/{id}")
+    public List<ScreeningResponse> getScreeningsByMovie(@PathVariable long id) { return screeningService.getScreeningsByMovie(id);}
+
     @GetMapping("/{id}")
     public ScreeningResponse getScreening(@PathVariable long id){
         return screeningService.getScreening(id,false);

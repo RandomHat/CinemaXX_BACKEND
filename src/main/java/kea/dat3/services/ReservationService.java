@@ -44,16 +44,15 @@ public class ReservationService {
         Screening screening = screeningRepository.getById(request.getScreeningId());
         Customer customer = getCustomerFromPrincipal(principal);
 
-        for (int seatId : request.getSeatIdList()) {
-            Seat seat = seatRepository.getById(seatId);
-            newReservations.add(new Reservation(seat, screening, customer));
+        for (int i = 0; i < request.getNoSeats(); i++) { //request.getSeatIdList() TODO when seats are implemented
+            //Seat seat = seatRepository.getById(seatId);
+            screening.incrementSeatReservationCounter();
+            newReservations.add(new Reservation(null, screening, customer)); //add seat to constructor
         }
 
         // Keep bidirectional Relathionships up to date, and save through customer.
         newReservations.forEach(customer::addReservation);
-        customerRepository.save(customer);
-
-        return ReservationResponse.getResponsesFromEntities(newReservations, false);
+        return ReservationResponse.getResponsesFromEntities(new ArrayList<>(customerRepository.save(customer).getReservations()), false);
     }
 
     public void deleteReservation(long id){

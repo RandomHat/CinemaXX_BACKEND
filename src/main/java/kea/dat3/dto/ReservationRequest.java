@@ -9,6 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ReservationRequest {
-    private int[] seatIdList;
+    //private int[] seatIdList; TODO implement reservations with seatID's
+    private int noSeats;
     private long screeningId;
 }
