@@ -15,7 +15,7 @@ We finished rooting out issues with entities and JPA associations. Screenings is
 
 ## Murat
 * Making a template for the Home Page in the FrontEnd, that displays some "random" movies.
-* Scaffolding the Endpoints, the DTO's and the Service layer for the project for Cinema
+* Scaffolding the Endpoints, the DTO's and the Service layer for the Movie class
 * Made the CinemaRepository
 
 # A list of sprint tasks you expect to complete in Sprint-2
